@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fruit Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+            padding: 40px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin: 20px auto;
+        }
+        input[type=file] {
+            margin-bottom: 15px;
+        }
+        img {
+            width: 250px;
+            height: 250px;
+            margin-top: 20px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+        }
+        .result {
+            font-size: 20px;
+            color: #007bff;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🍎 Fruit Image Classifier</h1>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required><br>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result">Predicted Fruit: <b>{{ prediction }}</b></div>
+        <img src="{{ image_path }}" alt="Uploaded Image">
+    {% endif %}
+</body>
+</html>
